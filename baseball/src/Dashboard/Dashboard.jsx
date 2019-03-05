@@ -6,13 +6,12 @@ import Display from '../Display/Display';
 export class Dashboard extends Component {
   state = {
     strikes: 0,
-    fouls: 0,
     balls: 0
   };
 
   handleStrike = () => {
     if (this.state.strikes === 2) {
-      this.setState({ strikes: 0, balls: 0, fouls: 0 });
+      this.setState({ strikes: 0, balls: 0 });
     } else {
       this.setState(prevState => {
         return { strikes: prevState.strikes + 1 };
@@ -22,12 +21,28 @@ export class Dashboard extends Component {
 
   handleBall = () => {
     if (this.state.balls === 3) {
-      this.setState({ strikes: 0, balls: 0, fouls: 0 });
+      this.setState({ strikes: 0, balls: 0 });
     } else {
       this.setState(prevState => {
         return { balls: prevState.balls + 1 };
       });
     }
+  };
+
+  handleFoul = () => {
+    if (this.state.strikes < 2) {
+      this.setState(prevState => {
+        return { strikes: prevState.strikes + 1 };
+      });
+    }
+  };
+
+  handleHit = () => {
+    this.setState({ strikes: 0, balls: 0 });
+  };
+
+  testFunction = () => {
+    return null;
   };
 
   render() {
@@ -41,10 +56,13 @@ export class Dashboard extends Component {
           <button onClick={this.handleBall}>Add Ball</button>
 
           {/* foul increases strikes up to 2, then has no effect */}
-          <button>Add Foul</button>
+          <button onClick={this.handleFoul}>Add Foul</button>
 
           {/* reset stikes and balls to 0 on hit */}
-          <button>Player Hits</button>
+          <button onClick={this.handleHit}>Player Hits</button>
+          {/* <button data-testid="hit" onClick={this.testFunction}>
+            test function on click
+          </button> */}
         </Buttons>
         <Display strikes={strikes} fouls={fouls} balls={balls} />
       </>

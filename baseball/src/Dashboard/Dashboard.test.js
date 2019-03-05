@@ -43,6 +43,7 @@ describe('<Dashboard />', () => {
 
       const strikeButton = getByText(/add strike/i);
       const strikeCount = getByTestId('strike-count');
+      const foulButton = getByText(/add foul/i);
 
       // strike testing
       expect(strikeCount.textContent).toBe('0');
@@ -52,6 +53,13 @@ describe('<Dashboard />', () => {
       expect(strikeCount.textContent).toBe('2');
       fireEvent.click(strikeButton);
       expect(strikeCount.textContent).toBe('0');
+
+      // foul testing
+      expect(strikeCount.textContent).toBe('0');
+      fireEvent.click(foulButton);
+      expect(strikeCount.textContent).toBe('1');
+      fireEvent.click(foulButton);
+      expect(strikeCount.textContent).toBe('2');
     });
 
     it('test that ball button increments and resets according to rules', () => {
@@ -72,23 +80,13 @@ describe('<Dashboard />', () => {
       fireEvent.click(ballButton);
       expect(ballCount.textContent).toBe('0');
     });
-
-    // it('test that foul button increments and resets according to rules', () => {
-    //   const { getByTestId, getByText } = render(<Dashboard />);
-
-    //   const foulButton = getByText(/add foul/i);
-    //   const foulCount = getByTestId('foul-count');
-
-    //   // foul testing
-    //   expect(foulCount.textContent).toBe('0');
-    //   fireEvent.click(foulButton);
-    //   expect(foulCount.textContent).toBe('1');
-    //   fireEvent.click(foulButton);
-    //   expect(foulCount.textContent).toBe('2');
-    //   fireEvent.click(foulButton);
-    //   expect(foulCount.textContent).toBe('3');
-    //   fireEvent.click(foulButton);
-    //   expect(foulCount.textContent).toBe('0');
-    // });
   });
+
+  // it('test a mock function', () => {
+  //   const mockCallBack = jest.fn();
+  //   const { getByTestId } = render(<Dashboard hit={mockCallBack} />); // button is expecting props.hit
+  //   const hitButton = getByTestId('hit');
+  //   fireEvent.click(hitButton);
+  //   expect(mockCallBack).toHaveBeenCalled();
+  // });
 });

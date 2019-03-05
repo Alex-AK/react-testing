@@ -13,11 +13,9 @@ describe('<Display />', () => {
     const { getByText } = render(<Display />);
 
     const strikes = getByText(/strikes/i);
-    const fouls = getByText(/fouls/i);
     const balls = getByText(/balls/i);
 
     expect(strikes).toBeInTheDocument();
-    expect(fouls).toBeInTheDocument();
     expect(balls).toBeInTheDocument();
   });
 });

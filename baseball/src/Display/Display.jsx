@@ -12,10 +12,6 @@ const Display = props => {
         Balls:
         <span data-testid="ball-count">{props.balls}</span>
       </div>
-      <div>
-        Fouls:
-        <span data-testid="foul-count">{props.fouls}</span>
-      </div>
     </Stats>
   );
 };
