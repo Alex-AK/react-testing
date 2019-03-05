@@ -19,4 +19,13 @@ describe('<App />', () => {
     const rules = getByText(/dashboard rules/i);
     expect(rules).toBeInTheDocument();
   });
+
+  it('render rules', () => {
+    const { getAllByTestId } = render(<App />);
+
+    const ruleNodes = getAllByTestId('rules');
+    const rules = ruleNodes.map(r => r.textContent);
+
+    expect(rules).toHaveLength(ruleNodes.length);
+  });
 });

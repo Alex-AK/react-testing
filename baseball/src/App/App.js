@@ -11,12 +11,14 @@ class App extends Component {
         <h1>Baseball Tracker</h1>
         <Rules>
           <h3>Dashboard Rules</h3>
-          <p>
+          <p data-testid="rules">
             1. balls and strikes reset to 0 when a player reaches 3 strikes or 4
             balls.
           </p>
-          <p>2. balls and strikes reset to 0 when a `hit` is recorded. </p>
-          <p>
+          <p data-testid="rules">
+            2. balls and strikes reset to 0 when a `hit` is recorded.{' '}
+          </p>
+          <p data-testid="rules">
             3. a foul increases strikes up to 2. With no strikes, a foul makes
             it 1 strike. With 1 strike, a foul makes it 2 strikes. With two
             strikes a foul has no effect, count stays at 2 strikes.
