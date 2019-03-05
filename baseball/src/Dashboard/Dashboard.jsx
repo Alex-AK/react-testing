@@ -10,6 +10,26 @@ export class Dashboard extends Component {
     balls: 0
   };
 
+  handleStrike = () => {
+    if (this.state.strikes === 2) {
+      this.setState({ strikes: 0, balls: 0, fouls: 0 });
+    } else {
+      this.setState(prevState => {
+        return { strikes: prevState.strikes + 1 };
+      });
+    }
+  };
+
+  handleBall = () => {
+    if (this.state.balls === 3) {
+      this.setState({ strikes: 0, balls: 0, fouls: 0 });
+    } else {
+      this.setState(prevState => {
+        return { balls: prevState.balls + 1 };
+      });
+    }
+  };
+
   render() {
     const { strikes, fouls, balls } = this.state;
 
@@ -17,8 +37,8 @@ export class Dashboard extends Component {
       <>
         <Buttons>
           {/* reset to 0 wen player reaches 3 strikes or 4 balls */}
-          <button>Add Strike</button>
-          <button>Add Ball</button>
+          <button onClick={this.handleStrike}>Add Strike</button>
+          <button onClick={this.handleBall}>Add Ball</button>
 
           {/* foul increases strikes up to 2, then has no effect */}
           <button>Add Foul</button>

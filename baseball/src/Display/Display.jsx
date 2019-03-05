@@ -4,9 +4,18 @@ import styled from 'styled-components';
 const Display = props => {
   return (
     <Stats>
-      <div>Strikes: {props.strikes}</div>
-      <div>Fouls: {props.fouls}</div>
-      <div>Balls: {props.balls}</div>
+      <div>
+        Strikes:
+        <span data-testid="strike-count">{props.strikes}</span>
+      </div>
+      <div>
+        Balls:
+        <span data-testid="ball-count">{props.balls}</span>
+      </div>
+      <div>
+        Fouls:
+        <span data-testid="foul-count">{props.fouls}</span>
+      </div>
     </Stats>
   );
 };
