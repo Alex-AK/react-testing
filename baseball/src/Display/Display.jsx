@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Display = props => {
   return (
@@ -13,5 +14,7 @@ const Display = props => {
 export default Display;
 
 const Stats = styled.div`
-  border: 1px solid blue;
+  div {
+    margin-bottom: 10px;
+  }
 `;
